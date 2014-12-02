@@ -29,6 +29,7 @@
 		DB732A391A2C3DDC0073EDF0 /* Media.m in Sources */ = {isa = PBXBuildFile; fileRef = DB732A381A2C3DDC0073EDF0 /* Media.m */; };
 		DB732A3C1A2C3F080073EDF0 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = DB732A3B1A2C3F080073EDF0 /* Comment.m */; };
 		DB732A3F1A2C425D0073EDF0 /* DataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = DB732A3E1A2C425D0073EDF0 /* DataSource.m */; };
+		DB732A421A2D5C120073EDF0 /* MediaTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DB732A411A2D5C120073EDF0 /* MediaTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,8 @@
 		DB732A3B1A2C3F080073EDF0 /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
 		DB732A3D1A2C425D0073EDF0 /* DataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataSource.h; sourceTree = "<group>"; };
 		DB732A3E1A2C425D0073EDF0 /* DataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSource.m; sourceTree = "<group>"; };
+		DB732A401A2D5C120073EDF0 /* MediaTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaTableViewCell.h; sourceTree = "<group>"; };
+		DB732A411A2D5C120073EDF0 /* MediaTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +124,8 @@
 				DB507D631A262D1A0000B04F /* AppDelegate.m */,
 				DB507D991A2AE9FE0000B04F /* ImagesTableViewController.h */,
 				DB507D9A1A2AE9FE0000B04F /* ImagesTableViewController.m */,
+				DB732A401A2D5C120073EDF0 /* MediaTableViewCell.h */,
+				DB732A411A2D5C120073EDF0 /* MediaTableViewCell.m */,
 				DB732A331A2C39CB0073EDF0 /* User.h */,
 				DB732A341A2C39CB0073EDF0 /* User.m */,
 				DB732A371A2C3DDC0073EDF0 /* Media.h */,
@@ -294,6 +299,7 @@
 			files = (
 				DB732A3C1A2C3F080073EDF0 /* Comment.m in Sources */,
 				DB732A391A2C3DDC0073EDF0 /* Media.m in Sources */,
+				DB732A421A2D5C120073EDF0 /* MediaTableViewCell.m in Sources */,
 				DB732A3F1A2C425D0073EDF0 /* DataSource.m in Sources */,
 				DB732A351A2C39CB0073EDF0 /* User.m in Sources */,
 				DB507D671A262D1A0000B04F /* ViewController.m in Sources */,
