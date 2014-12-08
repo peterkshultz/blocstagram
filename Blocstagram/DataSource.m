@@ -18,6 +18,9 @@
 
 @property (nonatomic, strong) NSMutableArray *mediaItems;
 
+@property (nonatomic, assign) BOOL isRefreshing;
+@property (nonatomic, assign) BOOL isLoadingOlderItems;
+
 @end
 
 
@@ -42,6 +45,55 @@
     }
     
     return self;
+}
+
+- (void) requestOldItemsWithCompletionHandler:(NewItemCompletionBlock)completionHandler
+{
+    if (self.isRefreshing == NO)
+    {
+        self.isRefreshing == YES;
+        
+        Media* media = [[Media alloc] init];
+        media.user = [self randomUser];
+        
+        media.image = [UIImage imageNamed:@"1.jpg"];
+        media.caption = [self randomStringOfLength:7];
+        
+        NSMutableArray* mutableArrayWithKVO = [self mutableArrayValueForKey:@"mediaItems"];
+        [mutableArrayWithKVO addObject:media];
+        
+        self.isRefreshing = NO;
+        
+        if (completionHandler)
+        {
+            completionHandler(nil);
+        }
+    }
+}
+
+
+- (void) requestNewItemsWithCompletionHandler:(NewItemCompletionBlock)completionHandler
+{
+    if (self.isRefreshing == NO)
+    {
+        self.isRefreshing == YES;
+        
+        Media* media = [[Media alloc] init];
+        media.user = [self randomUser];
+        
+        media.image = [UIImage imageNamed:@"10.jpg"];
+        media.caption = [self randomStringOfLength:7];
+        
+        NSMutableArray* mutableArrayWithKVO = [self mutableArrayValueForKey:@"mediaItems"];
+        [mutableArrayWithKVO insertObject:media atIndex:0];
+        
+        self.isRefreshing = NO;
+        
+        if (completionHandler)
+        {
+            completionHandler(nil);
+        }
+    }
 }
 
 - (void) deleteMediaItem:(Media *)item
