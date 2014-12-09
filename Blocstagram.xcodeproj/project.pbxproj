@@ -30,6 +30,7 @@
 		DB732A3C1A2C3F080073EDF0 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = DB732A3B1A2C3F080073EDF0 /* Comment.m */; };
 		DB732A3F1A2C425D0073EDF0 /* DataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = DB732A3E1A2C425D0073EDF0 /* DataSource.m */; };
 		DB732A421A2D5C120073EDF0 /* MediaTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DB732A411A2D5C120073EDF0 /* MediaTableViewCell.m */; };
+		DB9394E51A369AB9002B5730 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB9394E41A369AB9002B5730 /* LoginViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,8 @@
 		DB732A3E1A2C425D0073EDF0 /* DataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSource.m; sourceTree = "<group>"; };
 		DB732A401A2D5C120073EDF0 /* MediaTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaTableViewCell.h; sourceTree = "<group>"; };
 		DB732A411A2D5C120073EDF0 /* MediaTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaTableViewCell.m; sourceTree = "<group>"; };
+		DB9394E31A369AB9002B5730 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		DB9394E41A369AB9002B5730 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +137,8 @@
 				DB732A3B1A2C3F080073EDF0 /* Comment.m */,
 				DB732A3D1A2C425D0073EDF0 /* DataSource.h */,
 				DB732A3E1A2C425D0073EDF0 /* DataSource.m */,
+				DB9394E31A369AB9002B5730 /* LoginViewController.h */,
+				DB9394E41A369AB9002B5730 /* LoginViewController.m */,
 				DB507D651A262D1A0000B04F /* ViewController.h */,
 				DB507D661A262D1A0000B04F /* ViewController.m */,
 				DB507D681A262D1B0000B04F /* Main.storyboard */,
@@ -301,6 +306,7 @@
 				DB732A391A2C3DDC0073EDF0 /* Media.m in Sources */,
 				DB732A421A2D5C120073EDF0 /* MediaTableViewCell.m in Sources */,
 				DB732A3F1A2C425D0073EDF0 /* DataSource.m in Sources */,
+				DB9394E51A369AB9002B5730 /* LoginViewController.m in Sources */,
 				DB732A351A2C39CB0073EDF0 /* User.m in Sources */,
 				DB507D671A262D1A0000B04F /* ViewController.m in Sources */,
 				DB507D641A262D1A0000B04F /* AppDelegate.m in Sources */,
