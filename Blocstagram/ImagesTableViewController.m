@@ -15,6 +15,7 @@
 
 @interface ImagesTableViewController ()
 
+@property (assign) int i ;
 @end
 
 @implementation ImagesTableViewController
@@ -31,6 +32,7 @@
     [self.tableView registerClass:[MediaTableViewCell class] forCellReuseIdentifier:@"mediaCell"];
 //    UIBarButtonItem *newButton = [[UIBarButtonItem alloc]initWithTitle:@"Edit" style:UIBarButtonSystemItemEdit target:self action:@selector(editPressed:)];
 //    self.navigationItem.rightBarButtonItem = newButton;
+    self.i=0;
 }
 
 - (void) infiniteScrollIfNecessary
@@ -46,9 +48,16 @@
 
 #pragma mark - UIScrollViewDelegate
 
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    NSLog(@"%i", self.i++);
+    [self infiniteScrollIfNecessary];
+}
+
 - (void) scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    [self infiniteScrollIfNecessary];
+    //NSLog(@"%i", self.i++);
+    //[self infiniteScrollIfNecessary];
 }
 
 - (void) refreshControlDidFire:(UIRefreshControl*)sender

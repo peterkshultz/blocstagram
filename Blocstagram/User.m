@@ -25,7 +25,7 @@
         
         if (profileURL)
         {
-            self.profilePictureURL = profileURL
+            self.profilePictureURL = profileURL;
         }
     }
     

@@ -80,7 +80,7 @@
             {
                 completionHandler(error);
             }
-        }]
+        }];
     }
 }
 
@@ -116,7 +116,7 @@
                 if (responseData)
                 {
                     NSError* jsonError;
-                    NSDictionary* feedDictionary = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:jsonError];
+                    NSDictionary* feedDictionary = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:&jsonError];
                     
                     if (feedDictionary)
                     {
@@ -244,7 +244,18 @@
         self.isRefreshing == YES;
         
         NSString* minID = [[self.mediaItems firstObject] idNumber];
-        NSDictionary* parameters = @{@"min_id": minID};
+        
+        
+        NSDictionary* parameters;
+        
+        if (minID == nil)
+        {
+            parameters = nil;
+        }
+        else{
+            parameters = @{@"min_id": minID};
+        }
+        
         
         [self populateDataWithParamters:parameters completionHandler:^(NSError* error)
          {
