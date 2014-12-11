@@ -26,21 +26,30 @@
     [DataSource sharedInstance];
     
     UINavigationController* navVC = [[UINavigationController alloc] init];
-    LoginViewController* loginVC = [[LoginViewController alloc] init];
     
-    [navVC setViewControllers:@[loginVC] animated:YES];
-    
-    [[NSNotificationCenter defaultCenter] addObserverForName:LoginViewControllerDidGetAccessTokenNotification object:nil queue:nil usingBlock:^(NSNotification *note) {
+    if (![DataSource sharedInstance].accessToken)
+    {
+        LoginViewController* loginVC = [[LoginViewController alloc] init];
+        loginVC.title = @"Login";
+        
+        [navVC setViewControllers:@[loginVC] animated:YES];
+        
+        [[NSNotificationCenter defaultCenter] addObserverForName:LoginViewControllerDidGetAccessTokenNotification object:nil queue:nil usingBlock:^(NSNotification *note) {
+            ImagesTableViewController* imagesVC = [[ImagesTableViewController alloc] init];
+            [navVC setViewControllers:@[imagesVC] animated:YES];
+        }];
+    }
+    else
+    {
         ImagesTableViewController* imagesVC = [[ImagesTableViewController alloc] init];
         [navVC setViewControllers:@[imagesVC] animated:YES];
-    }];
+    }
     
     self.window.rootViewController = navVC;
     
     // Override point for customization after application launch.
 
     //Make the title of the view controller 'Login'
-    loginVC.title = @"Login";
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window  makeKeyAndVisible];
