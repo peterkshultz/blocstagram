@@ -78,6 +78,10 @@
                         [self willChangeValueForKey:@"mediaItems"];
                         self.mediaItems = mutableMediaItems;
                         [self didChangeValueForKey:@"mediaItems"];
+                        
+                        [self requestNewItemsWithCompletionHandler:^(NSError *error) {
+                            
+                        }];
                     }
                     
                     else
@@ -241,23 +245,27 @@
 
         if (tmpMediaItems.count > 0) {
             // Write the changes to disk
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                NSUInteger numberOfItemsToSave = MIN(self.mediaItems.count, 50);
-                NSArray *mediaItemsToSave = [self.mediaItems subarrayWithRange:NSMakeRange(0, numberOfItemsToSave)];
-                
-                NSString *fullPath = [self pathForFilename:NSStringFromSelector(@selector(mediaItems))];
-                NSData *mediaItemData = [NSKeyedArchiver archivedDataWithRootObject:mediaItemsToSave];
-                
-                NSError *dataError;
-                BOOL wroteSuccessfully = [mediaItemData writeToFile:fullPath options:NSDataWritingAtomic | NSDataWritingFileProtectionCompleteUnlessOpen error:&dataError];
-                
-                if (!wroteSuccessfully) {
-                    NSLog(@"Couldn't write file: %@", dataError);
-                }
-            });
             
+            [self saveToDisk];
         }
     
+}
+
+- (void) saveToDisk{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSUInteger numberOfItemsToSave = MIN(self.mediaItems.count, 50);
+        NSArray *mediaItemsToSave = [self.mediaItems subarrayWithRange:NSMakeRange(0, numberOfItemsToSave)];
+        
+        NSString *fullPath = [self pathForFilename:NSStringFromSelector(@selector(mediaItems))];
+        NSData *mediaItemData = [NSKeyedArchiver archivedDataWithRootObject:mediaItemsToSave];
+        
+        NSError *dataError;
+        BOOL wroteSuccessfully = [mediaItemData writeToFile:fullPath options:NSDataWritingAtomic | NSDataWritingFileProtectionCompleteUnlessOpen error:&dataError];
+        
+        if (!wroteSuccessfully) {
+            NSLog(@"Couldn't write file: %@", dataError);
+        }
+    });
 }
 
 
@@ -287,6 +295,8 @@
                         NSUInteger index = [mutableArrayWithKVO indexOfObject:mediaItem];
                         [mutableArrayWithKVO replaceObjectAtIndex:index withObject:mediaItem];
                     });
+                    
+                    [self saveToDisk];
                 }
                 
                 else
@@ -337,6 +347,9 @@
 {
     NSMutableArray* mutableArrayWithKVO = [self mutableArrayValueForKey:@"mediaItems"];
     [mutableArrayWithKVO removeObject:item];
+    
+    
+    [self saveToDisk];
 }
 
 
