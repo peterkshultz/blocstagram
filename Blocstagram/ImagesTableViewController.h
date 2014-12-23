@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Media.h"
 
 @interface ImagesTableViewController : UITableViewController
 @property (nonatomic, strong) NSMutableArray* images;
+
++ (void) mediaItem:(Media *)mediaItem withVC: (UIViewController*) vc;
+
 @end

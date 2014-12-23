@@ -12,10 +12,13 @@
 #import "User.h"
 #import "Comment.h"
 #import "MediaTableViewCell.h"
+#import "MediaFullScreenViewController.h"
+#import "MediaFullScreenAnimator.h"
 
-@interface ImagesTableViewController ()
+@interface ImagesTableViewController () <MediaTableViewCellDelegate, UIViewControllerTransitioningDelegate>
 
 @property (assign) int i ;
+@property (nonatomic, weak) UIImageView* lastTappedImageView;
 @end
 
 @implementation ImagesTableViewController
@@ -30,8 +33,8 @@
     
     
     [self.tableView registerClass:[MediaTableViewCell class] forCellReuseIdentifier:@"mediaCell"];
-//    UIBarButtonItem *newButton = [[UIBarButtonItem alloc]initWithTitle:@"Edit" style:UIBarButtonSystemItemEdit target:self action:@selector(editPressed:)];
-//    self.navigationItem.rightBarButtonItem = newButton;
+    //    UIBarButtonItem *newButton = [[UIBarButtonItem alloc]initWithTitle:@"Edit" style:UIBarButtonSystemItemEdit target:self action:@selector(editPressed:)];
+    //    self.navigationItem.rightBarButtonItem = newButton;
     self.i=0;
 }
 
@@ -167,6 +170,9 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     MediaTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"mediaCell" forIndexPath:indexPath];
+    
+    cell.delegate = self;
+    
     cell.mediaItem = [DataSource sharedInstance].mediaItems[indexPath.row];
     
     return cell;
@@ -197,20 +203,7 @@
 
 - (IBAction)editPressed:(id)sender
 {
-    // If the tableView is editing, change the barButton title to Edit and change the style
-    if (self.tableView.isEditing) {
-        UIBarButtonItem *newButton = [[UIBarButtonItem alloc]initWithTitle:@"Edit" style:UIBarButtonSystemItemDone target:self action:@selector(editPressed:)];
-        self.navigationItem.rightBarButtonItem = newButton;
-//        _buttonEdit = newButton;
-        [self.tableView setEditing:NO animated:YES];
-    }
-    // Else change it to Done style
-    else {
-        UIBarButtonItem *newButton = [[UIBarButtonItem alloc]initWithTitle:@"Done" style:UIBarButtonSystemItemEdit target:self action:@selector(editPressed:)];
-        self.navigationItem.rightBarButtonItem = newButton;
-//        _buttonEdit = newButton;
-        [self.tableView setEditing:YES animated:YES];
-    }
+    NSLog(@"They are interested in sharing!");
 }
 
 - (CGFloat) tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -232,6 +225,64 @@
 {
     [super setEditing:flag animated:animated];
 }
+
+#pragma mark - BLCMediaTableViewCellDelegate
+
+- (void) cell:(MediaTableViewCell *)cell didLongPressImageView:(UIImageView *)imageView
+{
+    
+    [ImagesTableViewController mediaItem:cell.mediaItem withVC: self];
+}
+
++ (void) mediaItem:(Media *)mediaItem withVC: (UIViewController*) vc
+{
+    NSMutableArray *itemsToShare = [NSMutableArray array];
+    
+    if (mediaItem.caption.length > 0)
+    {
+        [itemsToShare addObject:mediaItem.caption];
+    }
+    
+    if (mediaItem.image)
+    {
+        [itemsToShare addObject:mediaItem.image];
+    }
+    
+    if (itemsToShare.count > 0)
+    {
+        UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:itemsToShare applicationActivities:nil];
+        
+        [vc presentViewController:activityVC animated:YES completion:nil];
+    }
+}
+
+
+- (void) cell:(MediaTableViewCell *)cell didTapImageView:(UIImageView *)imageView {
+    MediaFullScreenViewController *fullScreenVC = [[MediaFullScreenViewController alloc] initWithMedia:cell.mediaItem];
+    
+    [self presentViewController:fullScreenVC animated:YES completion:nil];
+}
+
+#pragma mark - UIViewControllerTransitioningDelegate
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented
+                                                                  presentingController:(UIViewController *)presenting
+                                                                      sourceController:(UIViewController *)source
+{
+    
+    MediaFullScreenAnimator *animator = [MediaFullScreenAnimator new];
+    animator.presenting = YES;
+    animator.cellImageView = self.lastTappedImageView;
+    return animator;
+}
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed
+{
+    MediaFullScreenAnimator *animator = [MediaFullScreenAnimator new];
+    animator.cellImageView = self.lastTappedImageView;
+    return animator;
+}
+
 
 
 /*
