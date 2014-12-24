@@ -21,6 +21,7 @@
 @property (nonatomic, strong) NSLayoutConstraint *commentLabelHeightConstraint;
 @property (nonatomic, strong) UITapGestureRecognizer* tapGestureRecognizer;
 @property (nonatomic, strong) UILongPressGestureRecognizer *longPressGestureRecognizer;
+@property (nonatomic, strong) UITapGestureRecognizer* doubleTapForRetry;
 
 
 @end
@@ -154,6 +155,8 @@ static NSParagraphStyle* paragraphStyle;
 }
 
 
+
+
 - (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -174,6 +177,12 @@ static NSParagraphStyle* paragraphStyle;
         self.usernameAndCaptionLabel = [[UILabel alloc] init];
         self.commentLabel = [[UILabel alloc] init];
         self.commentLabel.numberOfLines = 0;
+        
+        self.doubleTapForRetry = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(twoFingerTapForRetryFired:)];
+        self.doubleTapForRetry.numberOfTouchesRequired = 2;
+        self.longPressGestureRecognizer.delegate = self;
+        [self.mediaImageView addGestureRecognizer:self.doubleTapForRetry];
+
         
         for (UIView *view in @[self.mediaImageView, self.usernameAndCaptionLabel, self.commentLabel]) {
             [self.contentView addSubview:view];
@@ -219,6 +228,13 @@ static NSParagraphStyle* paragraphStyle;
         [self.contentView addConstraints:@[self.imageHeightConstraint, self.usernameAndCaptionLabelHeightConstraint, self.commentLabelHeightConstraint]];
     }
     return self;
+}
+
+- (void) twoFingerTapForRetryFired:(UITapGestureRecognizer *)sender
+{
+    NSCoder* aDecoder;
+    
+    self.mediaItem.image = [aDecoder decodeObjectForKey:NSStringFromSelector(@selector(image))];
 }
 
 #pragma mark - Image View

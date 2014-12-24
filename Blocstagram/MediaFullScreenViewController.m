@@ -120,26 +120,6 @@
 
     [ImagesTableViewController mediaItem:self.media withVC:self];
     
-
-    
-    
-    
-    
-
-//    UINavigationController * itvc = (UINavigationController*) self.presentingViewController;
-//    
-//    if ([itvc isKindOfClass: [ImagesTableViewController class]]){
-//        NSLog(@"Hello2");
-//    }else if ([itvc isKindOfClass: [UINavigationController class]]){
-//        NSLog(@"Hello3");
-//    }
-//    
-//    NSLog(@"Hello");
-//    [itvc mediaItem:self.media withVC:self];
-//
-//    itvc.tableView.index
-    
-    
 }
 
 
