@@ -10,6 +10,7 @@
 #import "Media.h"
 #import "Comment.h"
 #import "User.h"
+#import "DataSource.h"
 
 @interface MediaTableViewCell()
 
@@ -180,8 +181,8 @@ static NSParagraphStyle* paragraphStyle;
         
         self.doubleTapForRetry = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(twoFingerTapForRetryFired:)];
         self.doubleTapForRetry.numberOfTouchesRequired = 2;
-        self.longPressGestureRecognizer.delegate = self;
-        [self.mediaImageView addGestureRecognizer:self.doubleTapForRetry];
+        self.doubleTapForRetry.delegate = self;
+        [self addGestureRecognizer:self.doubleTapForRetry];
 
         
         for (UIView *view in @[self.mediaImageView, self.usernameAndCaptionLabel, self.commentLabel]) {
@@ -232,9 +233,13 @@ static NSParagraphStyle* paragraphStyle;
 
 - (void) twoFingerTapForRetryFired:(UITapGestureRecognizer *)sender
 {
-    NSCoder* aDecoder;
+//    DataSource* object;
     
-    self.mediaItem.image = [aDecoder decodeObjectForKey:NSStringFromSelector(@selector(image))];
+    [[DataSource sharedInstance] downloadImageForMediaItem:self.mediaItem];
+    
+//    NSCoder* aDecoder;
+//    
+//    self.mediaItem.image = [aDecoder decodeObjectForKey:NSStringFromSelector(@selector(image))];
 }
 
 #pragma mark - Image View
