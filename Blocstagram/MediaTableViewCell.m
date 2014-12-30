@@ -17,6 +17,7 @@
 @property (nonatomic, strong) UIImageView* mediaImageView;
 @property (nonatomic, strong) UILabel* usernameAndCaptionLabel;
 @property (nonatomic, strong) UILabel* commentLabel;
+@property (nonatomic, strong) UILabel* numberOfLikes;
 @property (nonatomic, strong) NSLayoutConstraint *imageHeightConstraint;
 @property (nonatomic, strong) NSLayoutConstraint *usernameAndCaptionLabelHeightConstraint;
 @property (nonatomic, strong) NSLayoutConstraint *commentLabelHeightConstraint;
@@ -72,6 +73,11 @@ static NSParagraphStyle* paragraphStyle;
     return mutableUsernameAndCaptionString;
 }
 
+- (NSAttributedString*) numberOfLikesString
+{
+    
+}
+
 
 
 - (void) layoutSubviews
@@ -96,7 +102,7 @@ static NSParagraphStyle* paragraphStyle;
     }
     else
     {
-        self.imageHeightConstraint.constant = 100;
+        self.imageHeightConstraint.constant = CGRectGetWidth(self.contentView.bounds);
     }
 
     //Hide the line between cells
@@ -130,6 +136,7 @@ static NSParagraphStyle* paragraphStyle;
     self.mediaImageView.image = _mediaItem.image;
     self.usernameAndCaptionLabel.attributedText = [self usernameAndCaptionString];
     self.commentLabel.attributedText = [self commentString];
+    self.numberOfLikes.attributedText = [self numberOfLikesString];
     
 }
 
