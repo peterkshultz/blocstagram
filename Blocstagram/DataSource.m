@@ -347,6 +347,62 @@
     [self saveToDisk];
 }
 
+#pragma mark - Liking Media Items
+
+- (void) toggleLikeOnMediaItem:(Media *)mediaItem
+{
+    NSString *urlString = [NSString stringWithFormat:@"media/%@/likes", mediaItem.idNumber];
+    NSDictionary *parameters = @{@"access_token": self.accessToken};
+    
+    if (mediaItem.likeState == LikeStateNotLiked)
+    {
+        
+        mediaItem.likeState = LikeStateLiking;
+        
+        [self.instagramOperationManager POST:urlString parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSDictionary * dict = (NSDictionary*)responseObject;
+            NSLog(@"%@", dict.description);
+            mediaItem.likeState = LikeStateLiked;
+            mediaItem.numberOfLikes++;
+            [self reloadMediaItem:mediaItem];
+            [self saveToDisk];
+            
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error)
+         {
+            mediaItem.likeState = LikeStateNotLiked;
+            [self reloadMediaItem:mediaItem];
+        }];
+        
+    }
+    
+    else if (mediaItem.likeState == LikeStateLiked)
+    {
+        
+        mediaItem.likeState = LikeStateUnliking;
+        
+        [self.instagramOperationManager DELETE:urlString parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            mediaItem.likeState = LikeStateNotLiked;
+            mediaItem.numberOfLikes--;
+            [self reloadMediaItem:mediaItem];
+            [self saveToDisk];
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error)
+        {
+            mediaItem.likeState = LikeStateLiked;
+            [self reloadMediaItem:mediaItem];
+        }];
+        
+    }
+    
+    [self reloadMediaItem:mediaItem];
+}
+
+- (void) reloadMediaItem:(Media *)mediaItem
+{
+    NSMutableArray *mutableArrayWithKVO = [self mutableArrayValueForKey:@"mediaItems"];
+    NSUInteger index = [mutableArrayWithKVO indexOfObject:mediaItem];
+    [mutableArrayWithKVO replaceObjectAtIndex:index withObject:mediaItem];
+}
+
 
 #pragma mark - Key/Value Observing
 

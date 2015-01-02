@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		979F4C4933C7888C6025BB39 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 865665AEA5E9A71F65869583 /* libPods.a */; };
+		DB0DEA991A532AA3005FA967 /* CircleSpinnerView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB0DEA981A532AA3005FA967 /* CircleSpinnerView.m */; };
+		DB0DEA9C1A532CFF005FA967 /* LikeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DB0DEA9B1A532CFF005FA967 /* LikeButton.m */; };
 		DB507D611A262D1A0000B04F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DB507D601A262D1A0000B04F /* main.m */; };
 		DB507D641A262D1A0000B04F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DB507D631A262D1A0000B04F /* AppDelegate.m */; };
 		DB507D671A262D1A0000B04F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB507D661A262D1A0000B04F /* ViewController.m */; };
@@ -50,6 +52,10 @@
 		4FD1D4FD5AFF805FB44157B6 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		6E579F8EE70D436186725FF7 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		865665AEA5E9A71F65869583 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB0DEA971A532AA3005FA967 /* CircleSpinnerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleSpinnerView.h; sourceTree = "<group>"; };
+		DB0DEA981A532AA3005FA967 /* CircleSpinnerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleSpinnerView.m; sourceTree = "<group>"; };
+		DB0DEA9A1A532CFF005FA967 /* LikeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LikeButton.h; sourceTree = "<group>"; };
+		DB0DEA9B1A532CFF005FA967 /* LikeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LikeButton.m; sourceTree = "<group>"; };
 		DB507D5B1A262D1A0000B04F /* Blocstagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Blocstagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB507D5F1A262D1A0000B04F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB507D601A262D1A0000B04F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -161,6 +167,10 @@
 				DB52DDE51A49D9C10008EABA /* MediaFullScreenAnimator.m */,
 				DB732A401A2D5C120073EDF0 /* MediaTableViewCell.h */,
 				DB732A411A2D5C120073EDF0 /* MediaTableViewCell.m */,
+				DB0DEA971A532AA3005FA967 /* CircleSpinnerView.h */,
+				DB0DEA981A532AA3005FA967 /* CircleSpinnerView.m */,
+				DB0DEA9A1A532CFF005FA967 /* LikeButton.h */,
+				DB0DEA9B1A532CFF005FA967 /* LikeButton.m */,
 				DB52DDE11A49D5640008EABA /* MediaFullScreenViewController.h */,
 				DB52DDE21A49D5640008EABA /* MediaFullScreenViewController.m */,
 				DB732A331A2C39CB0073EDF0 /* User.h */,
@@ -374,10 +384,12 @@
 				DB732A3C1A2C3F080073EDF0 /* Comment.m in Sources */,
 				DB732A391A2C3DDC0073EDF0 /* Media.m in Sources */,
 				DB732A421A2D5C120073EDF0 /* MediaTableViewCell.m in Sources */,
+				DB0DEA991A532AA3005FA967 /* CircleSpinnerView.m in Sources */,
 				DB732A3F1A2C425D0073EDF0 /* DataSource.m in Sources */,
 				DB9394E51A369AB9002B5730 /* LoginViewController.m in Sources */,
 				DB732A351A2C39CB0073EDF0 /* User.m in Sources */,
 				DB507D671A262D1A0000B04F /* ViewController.m in Sources */,
+				DB0DEA9C1A532CFF005FA967 /* LikeButton.m in Sources */,
 				DB52DDE31A49D5640008EABA /* MediaFullScreenViewController.m in Sources */,
 				DB507D641A262D1A0000B04F /* AppDelegate.m in Sources */,
 				DB507D611A262D1A0000B04F /* main.m in Sources */,
