@@ -87,6 +87,9 @@
         self.user = [aDecoder decodeObjectForKey:NSStringFromSelector(@selector(user))];
         self.mediaURL = [aDecoder decodeObjectForKey:NSStringFromSelector(@selector(mediaURL))];
         self.image = [aDecoder decodeObjectForKey:NSStringFromSelector(@selector(image))];
+        self.caption = [aDecoder decodeObjectForKey:NSStringFromSelector(@selector(caption))];
+        self.comments = [aDecoder decodeObjectForKey:NSStringFromSelector(@selector(comments))];
+        self.likeState = [aDecoder decodeIntegerForKey:NSStringFromSelector(@selector(likeState))];
         
         if (self.image)
         {
@@ -103,11 +106,14 @@
             self.downloadState = MediaDownloadStateNonRecoverableError;
         }
 
+<<<<<<< HEAD
         
         self.caption = [aDecoder decodeObjectForKey:NSStringFromSelector(@selector(caption))];
         self.comments = [aDecoder decodeObjectForKey:NSStringFromSelector(@selector(comments))];
         self.likeState = [aDecoder decodeIntegerForKey:NSStringFromSelector(@selector(likeState))];
         self.numberOfLikes = [aDecoder decodeIntegerForKey:NSStringFromSelector(@selector(numberOfLikes))];
+=======
+>>>>>>> like-button
     }
     
     return self;
@@ -122,7 +128,10 @@
     [aCoder encodeObject:self.caption forKey:NSStringFromSelector(@selector(caption))];
     [aCoder encodeObject:self.comments forKey:NSStringFromSelector(@selector(comments))];
     [aCoder encodeInteger:self.likeState forKey:NSStringFromSelector(@selector(likeState))];
+<<<<<<< HEAD
     [aCoder encodeInteger:self.numberOfLikes forKey:NSStringFromSelector(@selector(numberOfLikes))];
+=======
+>>>>>>> like-button
 
 }
 

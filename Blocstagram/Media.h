@@ -9,7 +9,10 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 #import "LikeButton.h"
+<<<<<<< HEAD
 
+=======
+>>>>>>> like-button
 
 @class User;
 
@@ -31,7 +34,10 @@ typedef NS_ENUM(NSInteger, MediaDownloadState)
 @property (nonatomic, strong) NSArray* comments;
 @property (nonatomic, assign) MediaDownloadState downloadState;
 @property (nonatomic, assign) LikeState likeState;
+<<<<<<< HEAD
 @property (nonatomic, assign) NSInteger numberOfLikes;
+=======
+>>>>>>> like-button
 
 - (instancetype) initWithDictionary:(NSDictionary*)mediaDictionary;
 
