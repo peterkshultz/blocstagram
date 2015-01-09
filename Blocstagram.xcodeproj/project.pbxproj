@@ -8,13 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		979F4C4933C7888C6025BB39 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 865665AEA5E9A71F65869583 /* libPods.a */; };
-<<<<<<< HEAD
 		DB0DEA991A532AA3005FA967 /* CircleSpinnerView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB0DEA981A532AA3005FA967 /* CircleSpinnerView.m */; };
 		DB0DEA9C1A532CFF005FA967 /* LikeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DB0DEA9B1A532CFF005FA967 /* LikeButton.m */; };
-=======
-		DB0DEA931A4E16A5005FA967 /* CircleSpinnerView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB0DEA921A4E16A5005FA967 /* CircleSpinnerView.m */; };
-		DB0DEA961A4F0E2B005FA967 /* LikeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DB0DEA951A4F0E2B005FA967 /* LikeButton.m */; };
->>>>>>> like-button
 		DB507D611A262D1A0000B04F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DB507D601A262D1A0000B04F /* main.m */; };
 		DB507D641A262D1A0000B04F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DB507D631A262D1A0000B04F /* AppDelegate.m */; };
 		DB507D671A262D1A0000B04F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB507D661A262D1A0000B04F /* ViewController.m */; };
@@ -57,17 +52,10 @@
 		4FD1D4FD5AFF805FB44157B6 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		6E579F8EE70D436186725FF7 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		865665AEA5E9A71F65869583 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-<<<<<<< HEAD
 		DB0DEA971A532AA3005FA967 /* CircleSpinnerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleSpinnerView.h; sourceTree = "<group>"; };
 		DB0DEA981A532AA3005FA967 /* CircleSpinnerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleSpinnerView.m; sourceTree = "<group>"; };
 		DB0DEA9A1A532CFF005FA967 /* LikeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LikeButton.h; sourceTree = "<group>"; };
 		DB0DEA9B1A532CFF005FA967 /* LikeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LikeButton.m; sourceTree = "<group>"; };
-=======
-		DB0DEA911A4E16A5005FA967 /* CircleSpinnerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleSpinnerView.h; sourceTree = "<group>"; };
-		DB0DEA921A4E16A5005FA967 /* CircleSpinnerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleSpinnerView.m; sourceTree = "<group>"; };
-		DB0DEA941A4F0E2B005FA967 /* LikeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LikeButton.h; sourceTree = "<group>"; };
-		DB0DEA951A4F0E2B005FA967 /* LikeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LikeButton.m; sourceTree = "<group>"; };
->>>>>>> like-button
 		DB507D5B1A262D1A0000B04F /* Blocstagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Blocstagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB507D5F1A262D1A0000B04F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB507D601A262D1A0000B04F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -172,10 +160,6 @@
 			children = (
 				DB507D841A2AE9200000B04F /* Images */,
 				DB507D621A262D1A0000B04F /* AppDelegate.h */,
-				DB0DEA911A4E16A5005FA967 /* CircleSpinnerView.h */,
-				DB0DEA921A4E16A5005FA967 /* CircleSpinnerView.m */,
-				DB0DEA941A4F0E2B005FA967 /* LikeButton.h */,
-				DB0DEA951A4F0E2B005FA967 /* LikeButton.m */,
 				DB507D631A262D1A0000B04F /* AppDelegate.m */,
 				DB507D991A2AE9FE0000B04F /* ImagesTableViewController.h */,
 				DB507D9A1A2AE9FE0000B04F /* ImagesTableViewController.m */,
@@ -407,11 +391,9 @@
 				DB507D671A262D1A0000B04F /* ViewController.m in Sources */,
 				DB0DEA9C1A532CFF005FA967 /* LikeButton.m in Sources */,
 				DB52DDE31A49D5640008EABA /* MediaFullScreenViewController.m in Sources */,
-				DB0DEA961A4F0E2B005FA967 /* LikeButton.m in Sources */,
 				DB507D641A262D1A0000B04F /* AppDelegate.m in Sources */,
 				DB507D611A262D1A0000B04F /* main.m in Sources */,
 				DB52DDE61A49D9C10008EABA /* MediaFullScreenAnimator.m in Sources */,
-				DB0DEA931A4E16A5005FA967 /* CircleSpinnerView.m in Sources */,
 				DB507D9B1A2AE9FE0000B04F /* ImagesTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

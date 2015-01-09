@@ -1,15 +1,8 @@
 //
-<<<<<<< HEAD
 //  CircleSpinViewer.h
 //  Blocstagram
 //
 //  Created by Peter Shultz on 12/30/14.
-=======
-//  CircleSpinnerView.h
-//  Blocstagram
-//
-//  Created by Peter Shultz on 12/26/14.
->>>>>>> like-button
 //  Copyright (c) 2014 Peter Shultz. All rights reserved.
 //
 

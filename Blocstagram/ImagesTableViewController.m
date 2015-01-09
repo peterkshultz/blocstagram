@@ -147,12 +147,6 @@
     
 }
 
-- (void) cellDidPressLikeButton:(MediaTableViewCell *)cell
-{
-    [[DataSource sharedInstance] toggleLikeOnMediaItem:cell.mediaItem];
-}
-
-
 #pragma mark - Table view data source
 
 - (void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath

@@ -1,15 +1,8 @@
 //
-<<<<<<< HEAD
 //  CircleSpinViewer.m
 //  Blocstagram
 //
 //  Created by Peter Shultz on 12/30/14.
-=======
-//  CircleSpinnerView.m
-//  Blocstagram
-//
-//  Created by Peter Shultz on 12/26/14.
->>>>>>> like-button
 //  Copyright (c) 2014 Peter Shultz. All rights reserved.
 //
 
@@ -64,10 +57,7 @@
     [self layoutAnimatedLayer];
 }
 
-<<<<<<< HEAD
 
-=======
->>>>>>> like-button
 - (void)setFrame:(CGRect)frame
 {
     [super setFrame:frame];
@@ -159,10 +149,7 @@
         [_circleLayer addAnimation:animationGroup forKey:@"progress"];
         
     }
-<<<<<<< HEAD
     
-=======
->>>>>>> like-button
     return _circleLayer;
 }
 
