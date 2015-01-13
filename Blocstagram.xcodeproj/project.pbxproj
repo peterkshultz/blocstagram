@@ -10,6 +10,7 @@
 		979F4C4933C7888C6025BB39 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 865665AEA5E9A71F65869583 /* libPods.a */; };
 		DB0DEA991A532AA3005FA967 /* CircleSpinnerView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB0DEA981A532AA3005FA967 /* CircleSpinnerView.m */; };
 		DB0DEA9C1A532CFF005FA967 /* LikeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DB0DEA9B1A532CFF005FA967 /* LikeButton.m */; };
+		DB37D29F1A63020900295B9B /* ComposeCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB37D29E1A63020900295B9B /* ComposeCommentView.m */; };
 		DB507D611A262D1A0000B04F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DB507D601A262D1A0000B04F /* main.m */; };
 		DB507D641A262D1A0000B04F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DB507D631A262D1A0000B04F /* AppDelegate.m */; };
 		DB507D671A262D1A0000B04F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB507D661A262D1A0000B04F /* ViewController.m */; };
@@ -56,6 +57,8 @@
 		DB0DEA981A532AA3005FA967 /* CircleSpinnerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleSpinnerView.m; sourceTree = "<group>"; };
 		DB0DEA9A1A532CFF005FA967 /* LikeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LikeButton.h; sourceTree = "<group>"; };
 		DB0DEA9B1A532CFF005FA967 /* LikeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LikeButton.m; sourceTree = "<group>"; };
+		DB37D29D1A63020900295B9B /* ComposeCommentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposeCommentView.h; sourceTree = "<group>"; };
+		DB37D29E1A63020900295B9B /* ComposeCommentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposeCommentView.m; sourceTree = "<group>"; };
 		DB507D5B1A262D1A0000B04F /* Blocstagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Blocstagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB507D5F1A262D1A0000B04F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB507D601A262D1A0000B04F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -171,6 +174,8 @@
 				DB0DEA981A532AA3005FA967 /* CircleSpinnerView.m */,
 				DB0DEA9A1A532CFF005FA967 /* LikeButton.h */,
 				DB0DEA9B1A532CFF005FA967 /* LikeButton.m */,
+				DB37D29D1A63020900295B9B /* ComposeCommentView.h */,
+				DB37D29E1A63020900295B9B /* ComposeCommentView.m */,
 				DB52DDE11A49D5640008EABA /* MediaFullScreenViewController.h */,
 				DB52DDE21A49D5640008EABA /* MediaFullScreenViewController.m */,
 				DB732A331A2C39CB0073EDF0 /* User.h */,
@@ -384,6 +389,7 @@
 				DB732A3C1A2C3F080073EDF0 /* Comment.m in Sources */,
 				DB732A391A2C3DDC0073EDF0 /* Media.m in Sources */,
 				DB732A421A2D5C120073EDF0 /* MediaTableViewCell.m in Sources */,
+				DB37D29F1A63020900295B9B /* ComposeCommentView.m in Sources */,
 				DB0DEA991A532AA3005FA967 /* CircleSpinnerView.m in Sources */,
 				DB732A3F1A2C425D0073EDF0 /* DataSource.m in Sources */,
 				DB9394E51A369AB9002B5730 /* LoginViewController.m in Sources */,
