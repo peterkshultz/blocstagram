@@ -31,6 +31,9 @@
 		DB507D9B1A2AE9FE0000B04F /* ImagesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB507D9A1A2AE9FE0000B04F /* ImagesTableViewController.m */; };
 		DB52DDE31A49D5640008EABA /* MediaFullScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB52DDE21A49D5640008EABA /* MediaFullScreenViewController.m */; };
 		DB52DDE61A49D9C10008EABA /* MediaFullScreenAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = DB52DDE51A49D9C10008EABA /* MediaFullScreenAnimator.m */; };
+		DB5BE7C61A66176100CC5706 /* CameraToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = DB5BE7C51A66176100CC5706 /* CameraToolbar.m */; };
+		DB5BE7C91A6622A400CC5706 /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB5BE7C81A6622A400CC5706 /* CameraViewController.m */; };
+		DB5BE7CC1A66340C00CC5706 /* UIImage+ImageUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = DB5BE7CB1A66340C00CC5706 /* UIImage+ImageUtilities.m */; };
 		DB732A351A2C39CB0073EDF0 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = DB732A341A2C39CB0073EDF0 /* User.m */; };
 		DB732A391A2C3DDC0073EDF0 /* Media.m in Sources */ = {isa = PBXBuildFile; fileRef = DB732A381A2C3DDC0073EDF0 /* Media.m */; };
 		DB732A3C1A2C3F080073EDF0 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = DB732A3B1A2C3F080073EDF0 /* Comment.m */; };
@@ -88,6 +91,12 @@
 		DB52DDE21A49D5640008EABA /* MediaFullScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaFullScreenViewController.m; sourceTree = "<group>"; };
 		DB52DDE41A49D9C10008EABA /* MediaFullScreenAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaFullScreenAnimator.h; sourceTree = "<group>"; };
 		DB52DDE51A49D9C10008EABA /* MediaFullScreenAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaFullScreenAnimator.m; sourceTree = "<group>"; };
+		DB5BE7C41A66176100CC5706 /* CameraToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraToolbar.h; sourceTree = "<group>"; };
+		DB5BE7C51A66176100CC5706 /* CameraToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraToolbar.m; sourceTree = "<group>"; };
+		DB5BE7C71A6622A400CC5706 /* CameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraViewController.h; sourceTree = "<group>"; };
+		DB5BE7C81A6622A400CC5706 /* CameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraViewController.m; sourceTree = "<group>"; };
+		DB5BE7CA1A66340C00CC5706 /* UIImage+ImageUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageUtilities.h"; sourceTree = "<group>"; };
+		DB5BE7CB1A66340C00CC5706 /* UIImage+ImageUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageUtilities.m"; sourceTree = "<group>"; };
 		DB732A331A2C39CB0073EDF0 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		DB732A341A2C39CB0073EDF0 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		DB732A371A2C3DDC0073EDF0 /* Media.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Media.h; sourceTree = "<group>"; };
@@ -163,6 +172,12 @@
 			children = (
 				DB507D841A2AE9200000B04F /* Images */,
 				DB507D621A262D1A0000B04F /* AppDelegate.h */,
+				DB5BE7C41A66176100CC5706 /* CameraToolbar.h */,
+				DB5BE7C51A66176100CC5706 /* CameraToolbar.m */,
+				DB5BE7C71A6622A400CC5706 /* CameraViewController.h */,
+				DB5BE7C81A6622A400CC5706 /* CameraViewController.m */,
+				DB5BE7CA1A66340C00CC5706 /* UIImage+ImageUtilities.h */,
+				DB5BE7CB1A66340C00CC5706 /* UIImage+ImageUtilities.m */,
 				DB507D631A262D1A0000B04F /* AppDelegate.m */,
 				DB507D991A2AE9FE0000B04F /* ImagesTableViewController.h */,
 				DB507D9A1A2AE9FE0000B04F /* ImagesTableViewController.m */,
@@ -392,10 +407,13 @@
 				DB37D29F1A63020900295B9B /* ComposeCommentView.m in Sources */,
 				DB0DEA991A532AA3005FA967 /* CircleSpinnerView.m in Sources */,
 				DB732A3F1A2C425D0073EDF0 /* DataSource.m in Sources */,
+				DB5BE7C61A66176100CC5706 /* CameraToolbar.m in Sources */,
 				DB9394E51A369AB9002B5730 /* LoginViewController.m in Sources */,
 				DB732A351A2C39CB0073EDF0 /* User.m in Sources */,
 				DB507D671A262D1A0000B04F /* ViewController.m in Sources */,
+				DB5BE7C91A6622A400CC5706 /* CameraViewController.m in Sources */,
 				DB0DEA9C1A532CFF005FA967 /* LikeButton.m in Sources */,
+				DB5BE7CC1A66340C00CC5706 /* UIImage+ImageUtilities.m in Sources */,
 				DB52DDE31A49D5640008EABA /* MediaFullScreenViewController.m in Sources */,
 				DB507D641A262D1A0000B04F /* AppDelegate.m in Sources */,
 				DB507D611A262D1A0000B04F /* main.m in Sources */,
