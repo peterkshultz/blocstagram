@@ -22,8 +22,7 @@
 @property (nonatomic, strong) AVCaptureStillImageOutput* stillImageOutput;
 
 @property (nonatomic, strong) CropBox* cropBox;
-@property (nonatomic, strong) UIToolbar* topView;
-@property (nonatomic, strong) UIToolbar* bottomView;
+
 
 @property (nonatomic, strong) CameraToolbar* cameraToolbar;
 
@@ -176,13 +175,17 @@
     [super viewWillLayoutSubviews];
     
     CGFloat width = CGRectGetWidth(self.view.bounds);
-    self.topView.frame = CGRectMake(0, self.topLayoutGuide.length, width, 44);
     
-    CGFloat yOriginOfBottomView = CGRectGetMaxY(self.topView.frame) + width;
-    CGFloat heightOfBottomView = CGRectGetHeight(self.view.frame) - yOriginOfBottomView;
-    self.bottomView.frame = CGRectMake(0, yOriginOfBottomView, width, heightOfBottomView);
+//    self.topView.frame = CGRectMake(0, self.topLayoutGuide.length, width, 44);
+//
+    CGFloat topOfTopView = self.topLayoutGuide.length;
+//    CGFloat bottomOfTopView = self.topLayoutGuide.length +44;
+//    CGFloat yOriginOfBottomView = bottomOfTopView + width;
     
-    self.cropBox.frame = CGRectMake(0, CGRectGetMaxY(self.topView.frame), width, width);
+//    CGFloat heightOfBottomView = CGRectGetHeight(self.view.frame) - yOriginOfBottomView;
+//    self.bottomView.frame = CGRectMake(0, yOriginOfBottomView, width, heightOfBottomView);
+    
+    self.cropBox.frame = CGRectMake(0, 0, width, CGRectGetHeight(self.view.frame) - topOfTopView);
     
     self.imagePreview.frame = self.view.bounds;
     self.captureVideoPreviewLayer.frame = self.imagePreview.bounds;
@@ -251,7 +254,7 @@
 
 - (void) addViewsToHierarchy
 {
-    NSMutableArray* views = [@[self.imagePreview, self.topView, self.bottomView, self.cropBox] mutableCopy];
+    NSMutableArray* views = [@[self.imagePreview, self.cropBox] mutableCopy];
     [views addObject:self.cameraToolbar];
     
     for (UIView* view in views)
@@ -263,18 +266,13 @@
 - (void) createViews
 {
     self.imagePreview = [UIView new];
-    self.topView = [UIToolbar new];
-    self.bottomView = [UIToolbar new];
     self.cropBox = [CropBox new];
     self.cameraToolbar = [[CameraToolbar alloc] initWithImageNames:@[@"rotate", @"road"]];
     self.cameraToolbar.delegate = self;
     
-    UIColor* whiteBG = [UIColor colorWithWhite:1.0 alpha:.15];
     
-    self.topView.barTintColor = whiteBG;
-    self.bottomView.barTintColor = whiteBG;
-    self.topView.alpha = 0.5;
-    self.bottomView.alpha = 0.5;
+    
+
 }
 
 - (void)didReceiveMemoryWarning {

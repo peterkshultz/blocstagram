@@ -10,7 +10,7 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "CropImageViewController.h"
 
-@interface ImageLibraryViewController() <CropImageViewControllerDelegate>
+@interface ImageLibraryViewController() <CropImageViewControllerDelegate, UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, strong) ALAssetsLibrary* library;
 @property (nonatomic, strong) NSMutableArray* groups;
@@ -19,6 +19,27 @@
 @end
 
 @implementation ImageLibraryViewController
+
+- (CGSize) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    CGSize returnSize;
+   
+    //Get the image
+    ALAsset *asset = self.arrayOfAssets[indexPath.section][indexPath.row];
+    ALAssetRepresentation *representation = asset.defaultRepresentation;
+    CGImageRef imageRef = representation.fullResolutionImage;
+    UIImage* image = [[UIImage alloc] initWithCGImage:imageRef];
+
+
+    
+    //Set the width and height of returnSize to reflect that of the image/cell/indexPath
+    
+    returnSize.height = image.size.height/8;
+    returnSize.width = image.size.width/8;
+    
+
+    return returnSize;
+}
 
 - (void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {

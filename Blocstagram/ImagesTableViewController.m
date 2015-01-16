@@ -122,7 +122,7 @@
 
 - (void) imageLibraryViewController:(ImageLibraryViewController *)imageLibraryViewController didCompleteWithImage:(UIImage *)image
 {
-    [self handleImage:image withNavigationController:cameraViewController.navigationController];
+    [self handleImage:image withNavigationController:imageLibraryViewController.navigationController];
 }
 
 
