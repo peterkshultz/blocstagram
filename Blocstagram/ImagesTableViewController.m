@@ -16,6 +16,7 @@
 #import "MediaFullScreenAnimator.h"
 #import "CameraViewController.h"
 #import "ImageLibraryViewController.h"
+#import "PostToInstagramViewController.h"
 
 @interface ImagesTableViewController () <MediaTableViewCellDelegate, UIViewControllerTransitioningDelegate, CameraViewControllerDelegate, ImageLibraryViewControllerDelegate>
 
@@ -28,7 +29,23 @@
 
 @implementation ImagesTableViewController
 
-- (void)viewDidLoad {
+- (void) handleImage:(UIImage *)image withNavigationController:(UINavigationController *)nav
+{
+    if (image)
+    {
+        PostToInstagramViewController *postVC = [[PostToInstagramViewController alloc] initWithImage:image];
+        
+        [nav pushViewController:postVC animated:YES];
+    }
+    
+    else
+    {
+        [nav dismissViewControllerAnimated:YES completion:nil];
+    }
+}
+
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
     [[DataSource sharedInstance] addObserver:self forKeyPath:@"mediaItems" options:0 context:nil];
@@ -105,35 +122,13 @@
 
 - (void) imageLibraryViewController:(ImageLibraryViewController *)imageLibraryViewController didCompleteWithImage:(UIImage *)image
 {
-    [imageLibraryViewController dismissViewControllerAnimated:YES completion:^
-    {
-        if (image)
-        {
-            NSLog(@"Got an image!");
-        }
-        
-        else
-        {
-            NSLog(@"Closed without an image.");
-        }
-    }];
+    [self handleImage:image withNavigationController:cameraViewController.navigationController];
 }
 
 
 - (void) cameraViewController:(CameraViewController *)cameraViewController didCompleteWithImage:(UIImage *)image
 {
-    [cameraViewController dismissViewControllerAnimated:YES completion:^
-    {
-        if (image)
-        {
-            NSLog(@"Got an image!");
-        }
-        
-        else
-        {
-            NSLog(@"Closed without an image.");
-        }
-    }];
+    [self handleImage:image withNavigationController:cameraViewController.navigationController];
 }
 
 #pragma mark - UIScrollViewDelegate
