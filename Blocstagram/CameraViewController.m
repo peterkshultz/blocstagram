@@ -185,7 +185,7 @@
 //    CGFloat heightOfBottomView = CGRectGetHeight(self.view.frame) - yOriginOfBottomView;
 //    self.bottomView.frame = CGRectMake(0, yOriginOfBottomView, width, heightOfBottomView);
     
-    self.cropBox.frame = CGRectMake(0, 0, width, CGRectGetHeight(self.view.frame) - topOfTopView);
+    self.cropBox.frame = CGRectMake(0, topOfTopView, width, CGRectGetHeight(self.view.frame) - topOfTopView);
     
     self.imagePreview.frame = self.view.bounds;
     self.captureVideoPreviewLayer.frame = self.imagePreview.bounds;

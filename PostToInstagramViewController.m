@@ -133,18 +133,44 @@
         }
     }];
     
-    // Warm filter
+    // Fade filter
     
     [self.photoFilterOperationQueue addOperationWithBlock:^
     {
-        CIFilter *warmFilter = [CIFilter filterWithName:@"CIPhotoEffectTransfer"];
+        CIFilter *fadeFilter = [CIFilter filterWithName:@"CIPhotoEffectFade"];
         
-        if (warmFilter)
+        if (fadeFilter)
         {
-            [warmFilter setValue:sourceCIImage forKey:kCIInputImageKey];
-            [self addCIImageToCollectionView:warmFilter.outputImage withFilterTitle:NSLocalizedString(@"Warm", @"Warm Filter")];
+            [fadeFilter setValue:sourceCIImage forKey:kCIInputImageKey];
+            [self addCIImageToCollectionView:fadeFilter.outputImage withFilterTitle:NSLocalizedString(@"Fade", @"Fade Filter")];
         }
     }];
+    
+    // Instant filter
+    
+    [self.photoFilterOperationQueue addOperationWithBlock:^
+     {
+         CIFilter *instantFilter = [CIFilter filterWithName:@"CIPhotoEffectInstant"];
+         
+         if (instantFilter)
+         {
+             [instantFilter setValue:sourceCIImage forKey:kCIInputImageKey];
+             [self addCIImageToCollectionView:instantFilter.outputImage withFilterTitle:NSLocalizedString(@"Instant", @"Instant Filter")];
+         }
+     }];
+    
+    // Warm filter
+    
+    [self.photoFilterOperationQueue addOperationWithBlock:^
+     {
+         CIFilter *warmFilter = [CIFilter filterWithName:@"CIPhotoEffectTransfer"];
+         
+         if (warmFilter)
+         {
+             [warmFilter setValue:sourceCIImage forKey:kCIInputImageKey];
+             [self addCIImageToCollectionView:warmFilter.outputImage withFilterTitle:NSLocalizedString(@"Warm", @"Warm Filter")];
+         }
+     }];
     
     // Pixel filter
     

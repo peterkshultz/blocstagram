@@ -47,9 +47,9 @@
 
         
         
-        for (UIView *lineView in lines)
+        for (UIView *view in subviews)
         {
-            [self addSubview:lineView];
+            [self addSubview:view];
         }
         
         
