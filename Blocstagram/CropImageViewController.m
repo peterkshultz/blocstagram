@@ -42,13 +42,13 @@
     CGRect cropRect = CGRectZero;
     
     CGFloat edgeSize = MIN(CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame));
-    cropRect.size = CGSizeMake(edgeSize, edgeSize);
+    cropRect.size = self.view.frame.size;
     
     CGSize size = self.view.frame.size;
     
     self.cropBox.frame = cropRect;
     self.cropBox.center = CGPointMake(size.width / 2, size.height / 2);
-    self.scrollView.frame = self.cropBox.frame;
+    self.scrollView.frame = CGRectMake(self.cropBox.center.x - edgeSize/2, self.cropBox.center.y-edgeSize/2, edgeSize, edgeSize);
     self.scrollView.clipsToBounds = NO;
     
     [self recalculateZoomScale];

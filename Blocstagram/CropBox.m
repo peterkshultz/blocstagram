@@ -94,22 +94,17 @@
 - (void) layoutSubviews
 {
     [super layoutSubviews];
-    
-//    CGFloat width = CGRectGetWidth(self.view.bounds);
-//    self.topView.frame = CGRectMake(0, self.topLayoutGuide.length, width, 44);
-//    
-//    CGFloat yOriginOfBottomView = CGRectGetMaxY(self.topView.frame) + width;
-//    CGFloat heightOfBottomView = CGRectGetHeight(self.view.frame) - yOriginOfBottomView;
-//    self.bottomView.frame = CGRectMake(0, yOriginOfBottomView, width, heightOfBottomView);
-//    
-//    self.cropBox.frame = CGRectMake(0, CGRectGetMaxY(self.topView.frame), width, width);
 
+    //Changes made thus far: self.bottomView.frame now has a y-value of (2 * topViewHeight) + width
+    //Now fairly certain that isn't going to work--just realized what frame was.
+    
+    //Changes that need to be made: Double topViewHeight from 44 to 88 while making sure the cropBox doesn't change its position
+    
     CGFloat width = CGRectGetWidth(self.frame);
+    
+    CGFloat topOfLineY = CGRectGetHeight(self.frame)/2-width/2;
+    
 
-    CGFloat topViewHeight = 44;
-    
-    self.topView.frame = CGRectMake(0, 0, width, topViewHeight);
-    
     CGFloat thirdOfWidth = width / 3;
     
     for (int i = 0; i < 4; i++)
@@ -117,9 +112,9 @@
         UIView *horizontalLine = self.horizontalLines[i];
         UIView *verticalLine = self.verticalLines[i];
         
-        horizontalLine.frame = CGRectMake(0, (i * thirdOfWidth) + topViewHeight, width, 0.5);
+        horizontalLine.frame = CGRectMake(0, (i * thirdOfWidth) + topOfLineY, width, 0.5);
         
-        CGRect verticalFrame = CGRectMake(i * thirdOfWidth, topViewHeight, 0.5, width);
+        CGRect verticalFrame = CGRectMake(i * thirdOfWidth, topOfLineY, 0.5, width);
         
         if (i == 3)
         {
@@ -129,7 +124,15 @@
         verticalLine.frame = verticalFrame;
     }
     
-    self.bottomView.frame = CGRectMake(0, topViewHeight + width, width, self.frame.size.height - topViewHeight - width);
+//    CGFloat topViewHeight = 44;
+    
+    self.topView.frame = CGRectMake(0, 0, width, topOfLineY);
+    
+    
+    
+//    CGRectMake(<#CGFloat x#>, <#CGFloat y#>, <#CGFloat width#>, <#CGFloat height#>)
+    
+    self.bottomView.frame = CGRectMake(0, topOfLineY + width, width, self.frame.size.height - topOfLineY - width);
 }
 
 @end
