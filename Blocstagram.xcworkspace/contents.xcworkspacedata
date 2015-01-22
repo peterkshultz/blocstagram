@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:Blocstagram/Blocstagram-Prefix.pch">
+   </FileRef>
+   <FileRef
       location = "group:Blocstagram.xcodeproj">
    </FileRef>
    <FileRef
