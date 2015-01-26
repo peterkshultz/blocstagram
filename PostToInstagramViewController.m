@@ -7,6 +7,7 @@
 //
 
 #import "PostToInstagramViewController.h"
+#import "FilterCollectionViewCell.h"
 
 @interface PostToInstagramViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UIAlertViewDelegate, UIDocumentInteractionControllerDelegate>
 
@@ -119,6 +120,33 @@
         }
     }];
     
+    // Composite Filter
+    
+     [self.photoFilterOperationQueue addOperationWithBlock:^
+      {
+          CIFilter *boomFilter = [CIFilter filterWithName:@"CIPhotoEffectProcess"];
+          CIFilter *instantFilter = [CIFilter filterWithName:@"CIPhotoEffectInstant"];
+
+          
+          if (boomFilter)
+          {
+              [boomFilter setValue:sourceCIImage forKey:kCIInputImageKey];
+              
+              CIImage* result = boomFilter.outputImage;
+              
+              if (instantFilter)
+              {
+                  [instantFilter setValue:result forKey:kCIInputImageKey];
+                  
+                  result = instantFilter.outputImage;
+                  
+                  [self addCIImageToCollectionView:result withFilterTitle:NSLocalizedString(@"Boom-Instant", @"Boom-Instant Filter")];
+                  
+              }
+          }
+          
+      }];
+    
     
     // Boom filter
     
@@ -130,19 +158,6 @@
         {
             [boomFilter setValue:sourceCIImage forKey:kCIInputImageKey];
             [self addCIImageToCollectionView:boomFilter.outputImage withFilterTitle:NSLocalizedString(@"Boom", @"Boom Filter")];
-        }
-    }];
-    
-    // Fade filter
-    
-    [self.photoFilterOperationQueue addOperationWithBlock:^
-    {
-        CIFilter *fadeFilter = [CIFilter filterWithName:@"CIPhotoEffectFade"];
-        
-        if (fadeFilter)
-        {
-            [fadeFilter setValue:sourceCIImage forKey:kCIInputImageKey];
-            [self addCIImageToCollectionView:fadeFilter.outputImage withFilterTitle:NSLocalizedString(@"Fade", @"Fade Filter")];
         }
     }];
     
@@ -158,6 +173,21 @@
              [self addCIImageToCollectionView:instantFilter.outputImage withFilterTitle:NSLocalizedString(@"Instant", @"Instant Filter")];
          }
      }];
+
+    
+    // Fade filter
+    
+    [self.photoFilterOperationQueue addOperationWithBlock:^
+    {
+        CIFilter *fadeFilter = [CIFilter filterWithName:@"CIPhotoEffectFade"];
+        
+        if (fadeFilter)
+        {
+            [fadeFilter setValue:sourceCIImage forKey:kCIInputImageKey];
+            [self addCIImageToCollectionView:fadeFilter.outputImage withFilterTitle:NSLocalizedString(@"Fade", @"Fade Filter")];
+        }
+    }];
+    
     
     // Warm filter
     
@@ -314,33 +344,8 @@
 {
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     
-    static NSInteger imageViewTag = 1000;
-    static NSInteger labelTag = 1001;
-    
-    UIImageView *thumbnail = (UIImageView *)[cell.contentView viewWithTag:imageViewTag];
-    UILabel *label = (UILabel *)[cell.contentView viewWithTag:labelTag];
-    
-    UICollectionViewFlowLayout *flowLayout = (UICollectionViewFlowLayout *)self.filterCollectionView.collectionViewLayout;
-    CGFloat thumbnailEdgeSize = flowLayout.itemSize.width;
-    
-    if (!thumbnail)
-    {
-        thumbnail = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, thumbnailEdgeSize, thumbnailEdgeSize)];
-        thumbnail.contentMode = UIViewContentModeScaleAspectFill;
-        thumbnail.tag = imageViewTag;
-        thumbnail.clipsToBounds = YES;
-        
-        [cell.contentView addSubview:thumbnail];
-    }
-    
-    if (!label)
-    {
-        label = [[UILabel alloc] initWithFrame:CGRectMake(0, thumbnailEdgeSize, thumbnailEdgeSize, 20)];
-        label.tag = labelTag;
-        label.textAlignment = NSTextAlignmentCenter;
-        label.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:10];
-        [cell.contentView addSubview:label];
-    }
+    UIImageView *thumbnail = (UIImageView*) [cell viewWithTag:1000];
+    UILabel *label = (UILabel*) [cell viewWithTag:1001];
     
     thumbnail.image = self.filterImages[indexPath.row];
     label.text = self.filterTitles[indexPath.row];
@@ -426,7 +431,7 @@
         self.navigationItem.rightBarButtonItem = self.sendBarButton;
     }
     
-    [self.filterCollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
+    [self.filterCollectionView registerClass:[FilterCollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
     
     self.view.backgroundColor = [UIColor whiteColor];
     self.filterCollectionView.backgroundColor = [UIColor whiteColor];

@@ -10,6 +10,8 @@
 #import <XCTest/XCTest.h>
 #import "User.h"
 #include "Comment.h"
+#include "ComposeCommentView.h"
+#include "Media.h"
 
 @interface UserTests : XCTestCase
 
@@ -25,6 +27,39 @@
 - (void)tearDown {
     // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
+}
+
+- (void) testThatMediaWorks
+{
+    //Id, user, caption, likes
+    
+    NSDictionary *testDictionary = @{
+                                @"id" : [NSNumber numberWithInt:13],
+                                @"user" : @"peterkshultz",
+                                @"caption" : @"Objective-C is hard",
+                                @"likes" : @{@"count" :  [NSNumber numberWithInt:40]},
+                                };
+    
+    Media* testMediaItem = [[Media alloc] initWithDictionary:testDictionary];
+    
+    XCTAssertEqualObjects(testMediaItem, testDictionary);
+}
+
+- (void) testThatIsWritingCommentWorks
+{
+    //ComposeCommentView.m
+    
+    //Do something with commentAttributedString so that you can make a comment and then test it!
+    
+    ComposeCommentView* testComposeCommentView = [[ComposeCommentView alloc] init];
+    
+    [testComposeCommentView commentAttributedString];
+    
+}
+
+- (void) testThatHeightForMediaItemWorks
+{
+    
 }
 
 - (void) testThatInitializationWorks
