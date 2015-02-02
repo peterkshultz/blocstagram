@@ -126,11 +126,19 @@ static NSParagraphStyle* paragraphStyle;
     
     if (_mediaItem.image)
     {
-        self.imageHeightConstraint.constant = self.mediaItem.image.size.height / self.mediaItem.image.size.width * CGRectGetWidth(self.contentView.bounds);
+        if (isPhone)
+        {
+            self.imageHeightConstraint.constant = self.mediaItem.image.size.height / self.mediaItem.image.size.width * CGRectGetWidth(self.contentView.bounds);
+        }
+        
+        else
+        {
+            self.imageHeightConstraint.constant = 320;
+        }
     }
     else
     {
-        self.imageHeightConstraint.constant = CGRectGetWidth(self.contentView.bounds);
+        self.imageHeightConstraint.constant = 0;
     }
 
     //Hide the line between cells

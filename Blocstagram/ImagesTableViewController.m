@@ -25,9 +25,26 @@
 @property (nonatomic, weak) UIView *lastSelectedCommentView;
 @property (nonatomic, assign) CGFloat lastKeyboardAdjustment;
 
+@property (nonatomic, strong) UIPopoverController* cameraPopover;
+@property (nonatomic, strong) UIPopoverController* popoverForLongPress;
+
 @end
 
 @implementation ImagesTableViewController
+
+- (void) imageDidFinish:(NSNotification*)notification
+{
+    if (isPhone)
+    {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+    
+    else
+    {
+        [self.cameraPopover dismissPopoverAnimated:YES];
+        self.cameraPopover = nil;
+    }
+}
 
 - (void) handleImage:(UIImage *)image withNavigationController:(UINavigationController *)nav
 {
@@ -40,7 +57,16 @@
     
     else
     {
-        [nav dismissViewControllerAnimated:YES completion:nil];
+        if (isPhone)
+        {
+            [nav dismissViewControllerAnimated:YES completion:nil];
+        }
+        
+        else
+        {
+            [self.cameraPopover dismissPopoverAnimated:YES];
+            self.cameraPopover = nil;
+        }
     }
 }
 
@@ -77,6 +103,12 @@
                                              selector:@selector(keyboardWillHide:)
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(imageDidFinish:)
+                                                 name:ImageFinishedNotification
+                                               object:nil];
+    
 }
 
 - (void) infiniteScrollIfNecessary
@@ -115,8 +147,18 @@
     if (imageVC)
     {
         UINavigationController* nav = [[UINavigationController alloc] initWithRootViewController:imageVC];
-        [self presentViewController:nav animated:YES completion:nil];
+
+        if (isPhone)
+        {
+            [self presentViewController:nav animated:YES completion:nil];
+        }
         
+        else
+        {
+            self.cameraPopover = [[UIPopoverController alloc] initWithContentViewController:nav];
+            self.cameraPopover.popoverContentSize = CGSizeMake(320, 568);
+            [self.cameraPopover presentPopoverFromBarButtonItem:sender permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+        }
     }
 }
 
@@ -208,6 +250,8 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:YES];
+    
     NSIndexPath *indexPath = self.tableView.indexPathForSelectedRow;
     
     if (indexPath)
@@ -216,8 +260,9 @@
     }
 }
 
-- (void) viewWillDisappear:(BOOL)animated {
-    
+- (void) viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:YES];
 }
 
 - (void) dealloc
@@ -351,9 +396,45 @@
 
 - (void) cell:(MediaTableViewCell *)cell didLongPressImageView:(UIImageView *)imageView
 {
+    if (isPhone)
+    {
+        [ImagesTableViewController mediaItem:cell.mediaItem withVC: self];
+    }
     
-    [ImagesTableViewController mediaItem:cell.mediaItem withVC: self];
+    else
+    {
+        //NOTE: Cannot use willAnimateRotationToInterfaceOrientation:duration::
+        //It has been deprecated in iOS 8.0.
+        
+        //is iPad
+        NSLog(@"I'm here!");
+        
+        CGFloat centerY = [UIScreen mainScreen].bounds.size.height / 2;
+        CGFloat centerX = [UIScreen mainScreen].bounds.size.width / 2;
+        
+        //Some code from mediaItem
+        NSMutableArray *itemsToShare = [NSMutableArray array];
+        
+        //Add the image to the array--you want to share the iamge, after all.
+        [itemsToShare addObject:imageView.image];
+        UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:itemsToShare applicationActivities:nil];
+        CGRect sample = CGRectMake(centerX, centerY, 500, 500);
+
+        
+        //Allocate and instantiate the popover
+        self.popoverForLongPress = [[UIPopoverController alloc] initWithContentViewController:activityVC];
+        
+        //Size
+        self.popoverForLongPress.popoverContentSize = CGSizeMake(320, 568);
+
+        
+        [self.popoverForLongPress presentPopoverFromRect:sample inView:imageView permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+        
+        
+        
+    }
 }
+    
 
 + (void) mediaItem:(Media *)mediaItem withVC: (UIViewController*) vc
 {
@@ -380,6 +461,17 @@
 
 - (void) cell:(MediaTableViewCell *)cell didTapImageView:(UIImageView *)imageView {
     MediaFullScreenViewController *fullScreenVC = [[MediaFullScreenViewController alloc] initWithMedia:cell.mediaItem];
+    
+    if (isPhone)
+    {
+        fullScreenVC.transitioningDelegate = self;
+        fullScreenVC.modalPresentationStyle = UIModalPresentationCustom;
+    }
+    
+    else
+    {
+        fullScreenVC.modalPresentationStyle = UIModalPresentationFormSheet;
+    }
     
     [self presentViewController:fullScreenVC animated:YES completion:nil];
 }

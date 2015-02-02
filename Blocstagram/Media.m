@@ -63,6 +63,9 @@
         for (NSDictionary* commentDictionary in mediaDictionary[@"comments"][@"data"])
         {
             Comment* comment = [[Comment alloc] initWithDictionary:commentDictionary];
+            
+            [commentsArray addObject:comment];
+            
         }
         
         self.comments = commentsArray;

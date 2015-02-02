@@ -32,6 +32,9 @@
 
 @implementation DataSource
 
+NSString* const ImageFinishedNotification = @"ImageFinishedNotification";
+
+
 + (NSString*) instagramClientID {
     return @"e3226ebee00b416db3bec13d2eae33c3";
 }
