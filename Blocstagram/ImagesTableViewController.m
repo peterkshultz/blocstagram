@@ -429,9 +429,6 @@
 
         
         [self.popoverForLongPress presentPopoverFromRect:sample inView:imageView permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-        
-        
-        
     }
 }
     

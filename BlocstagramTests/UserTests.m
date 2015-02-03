@@ -60,6 +60,8 @@
 - (void) testThatHeightForMediaItemWorks
 {
     
+    
+    
 }
 
 - (void) testThatInitializationWorks
